@@ -1,4 +1,4 @@
-# Cirks_Unity
+# Cirks_Unity 🎲
 Unity 2.5D Circus project
 
 <img width="1080" alt="Screenshot 2025-02-25 112746" src="https://github.com/user-attachments/assets/3199e426-8a1b-49f1-9891-7e0b5647d4eb" />
