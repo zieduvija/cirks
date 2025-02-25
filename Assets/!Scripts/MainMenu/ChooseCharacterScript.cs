@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class ChooseCharacterScript : MonoBehaviour
 {
+
+
+    void Start(){
+        PlayerPrefs.SetString("previousScene", "MainMenue");
+    }
     public GameObject[] characters;
     int characterIndex;
 

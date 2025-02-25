@@ -95,7 +95,10 @@ public class CirksGameManager : MonoBehaviour
         {
             if (result == 1 || result == 6)
             {
-                int startingTile = 6;
+                int startingTile = result;
+                if(startingTile == 6)
+                startingTile--;
+                else startingTile = 1;
                 yield return StartCoroutine(boardManager.RunAndJumpPlayerThroughTiles(players[currentPlayerIndex].gameObject, playerTileIndices[currentPlayerIndex], startingTile));
                 playerTileIndices[currentPlayerIndex] = startingTile;
                 messageText.text = players[currentPlayerIndex].GetPlayerName() + " has started and advanced to tile " + startingTile + "!";
@@ -109,7 +112,7 @@ public class CirksGameManager : MonoBehaviour
         else
         {
             int currentTile = playerTileIndices[currentPlayerIndex];
-            int targetTile = currentTile + result;
+            int targetTile = currentTile + result - 1;
             if (targetTile >= boardManager.totalTiles)
                 targetTile = boardManager.totalTiles - 1;
             yield return StartCoroutine(boardManager.RunAndJumpPlayerThroughTiles(players[currentPlayerIndex].gameObject, currentTile, targetTile));
@@ -128,7 +131,7 @@ public class CirksGameManager : MonoBehaviour
             int delta = boardManager.GetTileDelta(targetTile);
             if (delta != 0)
             {
-                int newTarget = targetTile + delta;
+                int newTarget = targetTile + delta - 1;
                 newTarget = Mathf.Clamp(newTarget, 0, boardManager.totalTiles - 1);
                 yield return StartCoroutine(boardManager.RunAndJumpPlayerThroughTiles(players[currentPlayerIndex].gameObject, targetTile, newTarget));
                 playerTileIndices[currentPlayerIndex] = newTarget;
